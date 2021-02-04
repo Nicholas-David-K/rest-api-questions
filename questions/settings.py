@@ -144,11 +144,16 @@ ACCOUNT_USER_EMAIL_FIELD = 'email'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'questions/static')
+]
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USER_MODEL = (True)
+
 
 
 # media
@@ -195,4 +200,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL')
-EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD') 
