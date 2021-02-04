@@ -50,6 +50,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'gender']
 
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
