@@ -45,7 +45,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, unique=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True)
-    age = models.DateField()
+
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
