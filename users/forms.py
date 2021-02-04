@@ -13,7 +13,7 @@ class CustomUserCreationForm(RegistrationForm):
 class CustomUserChangeForm(UserChangeForm):
      class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'email', 'gender']
+        fields = ['first_name', 'last_name', 'email', 'gender', 'age']
 
 
 
