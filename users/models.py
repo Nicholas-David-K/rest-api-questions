@@ -10,7 +10,7 @@ GENDER_CHOICES = (
 )
 
 class UserManager(BaseUserManager):
-    def create_user(self, first_name, last_name, email, gender, age, password=None, **extra_fields):
+    def create_user(self, first_name, last_name, email, gender, password=None, **extra_fields):
 
         if not email:
             raise ValueError('Email Address is Required')
@@ -20,7 +20,6 @@ class UserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name, 
             gender=gender, 
-            age=age
         )
 
         user.set_password(password)
@@ -29,8 +28,8 @@ class UserManager(BaseUserManager):
         return user
 
 
-    def create_superuser(self, first_name, last_name, email, gender, age,password=None, **extra_fields):
-        user = self.create_user(first_name, last_name, email, gender, age)
+    def create_superuser(self, first_name, last_name, email, gender, password=None, **extra_fields):
+        user = self.create_user(first_name, last_name, email, gender)
         
         user.is_superuser = True
         user.is_staff = True
