@@ -10,7 +10,7 @@ GENDER_CHOICES = (
 )
 
 class UserManager(BaseUserManager):
-    def create_user(self, first_name, last_name, email, gender, age, password=None, **extra_fields):
+    def create_user(self, first_name, last_name, email, gender, password=None, **extra_fields):
 
         if not email:
             raise ValueError('Email Address is Required')
@@ -19,8 +19,7 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name, 
-            gender=gender, 
-            age=age
+            gender=gender
         )
 
         user.set_password(password)
@@ -29,8 +28,8 @@ class UserManager(BaseUserManager):
         return user
 
 
-    def create_superuser(self, first_name, last_name, email, gender, age,password=None, **extra_fields):
-        user = self.create_user(first_name, last_name, email, gender, age)
+    def create_superuser(self, first_name, last_name, email, gender,password=None, **extra_fields):
+        user = self.create_user(first_name, last_name, email, gender)
         
         user.is_superuser = True
         user.is_staff = True
@@ -45,8 +44,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, unique=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True)
-    age = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
-
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
