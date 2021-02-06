@@ -6,11 +6,11 @@ class AnswerSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
     user_has_liked = serializers.SerializerMethodField()
-    question = serializers.StringRelatedField()
+   
 
     class Meta:
         model = Answer
-        exclude = ['voters']
+        exclude = ['question', 'voters']
 
     
     def get_created_at(self, instance):
