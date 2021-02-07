@@ -10,7 +10,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = ['question', 'voters']
+        exclude = ['voters']
 
     
     def get_created_at(self, instance):
