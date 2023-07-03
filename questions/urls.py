@@ -34,7 +34,7 @@ def root_redirect(request):
     if request.user.is_authenticated:
         return redirect('/api/questions/')
     else:
-        return redirect('/api/')
+        return redirect('/api')
 
 
 
