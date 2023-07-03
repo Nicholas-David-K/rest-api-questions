@@ -25,6 +25,19 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+
+
+@login_required
+def root_redirect(request):
+    if request.user.is_authenticated:
+        return redirect('/api/questions/')
+    else:
+        return redirect('/api/')
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -51,6 +64,8 @@ urlpatterns = [
     path('api/', include('users.api.urls')),
     path('api/', include('Userqueries.api.urls')),
 
-    path('', RedirectView.as_view(url='/api/questions/'), name='root_redirect'),
+    path('', root_redirect, name='root_redirect'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

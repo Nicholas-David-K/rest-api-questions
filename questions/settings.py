@@ -28,7 +28,7 @@ SECRET_KEY = "9d70bf4618c37c98348d61aab2ee1861ba2bc7851b46b791d0caffbe3f6351"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['flutter-questions.herokuapp.com']
 
