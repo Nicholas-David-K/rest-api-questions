@@ -19,6 +19,7 @@ from users.forms import CustomUserCreationForm
 
 from django_registration.backends.one_step.views import RegistrationView
 from django.contrib.auth.views import PasswordResetConfirmView
+from django.views.generic import RedirectView
 
 
 from django.conf import settings
@@ -48,6 +49,8 @@ urlpatterns = [
 
     # api
     path('api/', include('users.api.urls')),
-    path('api/', include('Userqueries.api.urls'))
+    path('api/', include('Userqueries.api.urls')),
+
+    path('', RedirectView.as_view(url='/api/questions/'), name='root_redirect'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
